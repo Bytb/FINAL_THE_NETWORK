@@ -12,6 +12,7 @@ module.exports = {
         offwhite: "#F5FBFC",
         white: "#FFFFF",
         turq: "#13D9C8",
+        flat: "#01020E",
       },
     },
   },

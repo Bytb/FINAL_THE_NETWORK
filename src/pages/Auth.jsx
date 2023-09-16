@@ -7,6 +7,7 @@ import {
 } from "firebase/auth";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"; //to check for invalid logins
+import { useTypewriter, Cursor } from "react-simple-typewriter";
 
 const Auth = () => {
   const [email, setEmail] = useState("");
@@ -55,28 +56,56 @@ const Auth = () => {
     }
   };
 
+  const [title] = useTypewriter({
+    words: ["Welcome to SafeMe", "Safety is SafeMe"],
+    loop: {},
+    typeSpeed: 100,
+    deleteSpeed: 80,
+  });
+
   return (
-    <div className="h-screen flex flex-col items-center bg-offwhite">
-      <div className="drop-shadow-lg w-full h-1/6">
-        <h1 className="text-4xl">Welcome to The Network</h1>
-      </div>
-      <div className="m-10 flex flex-col items-center justify-center gap-5 border-4 border-red-500 rounded-lg p-20">
-        <h2>Sign In</h2>
-        <input
-          type="text"
-          placeholder="Enter Email"
-          // NOTE: this is how you assign the contents of an input into a variable
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Enter Password"
-          // NOTE: this is how you assign the contents of an input into a variable
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button onClick={SignIn}>Enter</button>
-        <button onClick={SignInWithGoogle}>Sign In With Google</button>
-        <button onClick={SignOut}>Sign Out</button>
+    <div className="h-screen bg-[conic-gradient(at_left,_var(--tw-gradient-stops))] from-flat via-turq to-blue-500 text-flat flex justify-center items-center font-thin">
+      <div className="border-4 border-turq h-2/3 w-1/3 flex flex-col p-10 rounded-lg bg-offwhite">
+        <div className="flex justify-center">
+          <h2 className="text-2xl">Sign In</h2>
+        </div>
+        <div className="flex flex-col mt-10">
+          <div className="flex flex-col gap-5 mb-5">
+            <input
+              type="text"
+              placeholder="Enter Email"
+              // NOTE: this is how you assign the contents of an input into a variable
+              onChange={(e) => setEmail(e.target.value)}
+              className="h-10 bg-transparent border-b-2 border-flat hover:none pb-1"
+            />
+            <input
+              type="password"
+              placeholder="Enter Password"
+              // NOTE: this is how you assign the contents of an input into a variable
+              onChange={(e) => setPassword(e.target.value)}
+              className="h-10 bg-transparent border-b-2 border-flat hover:none pb-1"
+            />
+          </div>
+          <div className="gap-2 flex flex-col">
+            <button
+              onClick={SignIn}
+              className="bg-turq rounded-lg text-offwhite hover:bg-flat hover:border-2 hover:border-turq hover:text-turq p-4 hover:drop-shadow-xl"
+            >
+              Log In
+            </button>
+            <button
+              onClick={SignInWithGoogle}
+              className="bg-gray rounded-lg text-offwhite hover:bg-flat hover:border-2 hover:border-turq hover:text-turq p-4 hover:drop-shadow-xl"
+            >
+              Sign In With Google
+            </button>
+          </div>
+        </div>
+        <div className="flex flex-col h-full justify-end">
+          <button onClick={SignOut} className="hover:text-blue-600">
+            Sign Out
+          </button>
+        </div>
       </div>
     </div>
   );
