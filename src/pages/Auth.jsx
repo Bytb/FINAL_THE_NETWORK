@@ -30,7 +30,7 @@ const Auth = () => {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       // Navigate to the next page ONLY if authentication is successful
-      navigate("/preferences");
+      navigate("/chatroom");
     } catch (err) {
       console.log(err);
       alert(err.message);
@@ -41,7 +41,7 @@ const Auth = () => {
   const SignInWithGoogle = async () => {
     try {
       await signInWithPopup(auth, googleProvider);
-      navigate("/preferences");
+      navigate("/chatroom");
     } catch (err) {
       console.log(err);
     }
