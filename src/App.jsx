@@ -1,7 +1,6 @@
 import Auth from "./pages/Auth";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { useState, createContext, useEffect } from "react";
-import Preferences from "./pages/Preferences";
 import Map from "./pages/Map";
 import Homepage from "./pages/Homepage";
 
@@ -49,7 +48,6 @@ function App() {
           <Routes>
             <Route path="/" element={<Homepage />} className="h-full" />
             <Route path="/login" element={<Auth />} className="h-full" />
-            <Route path="/preferences" element={<Preferences />} />
             <Route path="/map" element={<Map />} />
           </Routes>
         </GlobalVariables.Provider>

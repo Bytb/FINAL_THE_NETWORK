@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const Homepage = () => {
   const [title] = useTypewriter({
-    words: ["Welcome to SafeMe", "Safety is SafeMe"],
+    words: ["Welcome to SendIt", "Quick pickups, anytime."],
     loop: {},
     typeSpeed: 100,
     deleteSpeed: 80,
