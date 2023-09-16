@@ -70,9 +70,10 @@ function App() {
         >
           <Routes>
             <Route path="/" element={<Homepage />} className="h-full" />
+            <Route path={"/login"} element={<Auth />} className="h-full" />
             <Route
-              path={user ? "/chatroom" : "/login"}
-              element={user ? <ChatRoom /> : <Auth />}
+              path={"/chatroom"}
+              element={<ChatRoom />}
               className="h-full"
             />
             <Route path="/map" element={<Map />} />
