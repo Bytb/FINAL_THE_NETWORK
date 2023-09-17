@@ -22,6 +22,7 @@ export default function Home() {
 
 function Map() {
   const [activeMarker, setActiveMarker] = useState(false);
+  const [activeMarkerFriend, setActiveMarkerFriend] = useState(false);
   const { longitude, latitude } = useContext(GlobalVariables);
 
   const consent = async (ç) => {
@@ -30,6 +31,7 @@ function Map() {
         latitude: latitude,
         longitude: longitude,
         time: firebase.firestore.FieldValue.serverTimestamp(),
+        consent: true,
       });
     } catch (err) {
       console.log(err);
@@ -44,7 +46,12 @@ function Map() {
     <GoogleMap zoom={10} center={{ lat: latitude, lng: longitude }}>
       <div className="h-screen">
         {activeMarker && (
-          <Marker position={{ lat: latitude, lng: longitude }} />
+          <>
+            <Marker position={{ lat: latitude, lng: longitude }} />
+            {activeMarkerFriend && (
+              <Marker position={{ lat: latFriend, lng: lonFriend }} />
+            )}
+          </>
         )}
       </div>
       <button
@@ -55,6 +62,4 @@ function Map() {
       </button>
     </GoogleMap>
   );
-
-  // CHANGE HERE
 }
