@@ -5,6 +5,14 @@ import { useMemo } from "react";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 import { useEffect, useState, useContext } from "react";
 import { GlobalVariables } from "../App";
+import { getDoc } from "firebase/firestore";
+
+
+// CHANGE HERE
+const locationsRef = collection(db, "locations");
+
+const [xposition, setX] = useState();
+const [yposition, setY] = useState();
 
 export default function Home() {
   const { isLoaded } = useLoadScript({
@@ -32,5 +40,19 @@ function Map() {
         )}
       </div>
     </GoogleMap>
+  
   );
+
+// CHANGE HERE
+
 }
+const onSubmit = async () => {
+  try {
+    await addDoc(locationsRef, {
+     xposition: latitude,
+     yposition: longitude
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
