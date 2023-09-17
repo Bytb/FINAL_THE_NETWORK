@@ -109,6 +109,8 @@ function ChatRoom() {
     dummy.current.scrollIntoView({ behavior: "smooth" });
   };
 
+  const clearChat = async () => {};
+
   return (
     <>
       <main>
@@ -119,15 +121,18 @@ function ChatRoom() {
       </main>
 
       <form onSubmit={sendMessage}>
-        <input
-          value={formValue}
-          onChange={(e) => setFormValue(e.target.value)}
-          placeholder="say something nice"
-        />
+        <div>
+          <input
+            value={formValue}
+            onChange={(e) => setFormValue(e.target.value)}
+            placeholder="say something nice"
+          />
 
-        <button type="submit" disabled={!formValue}>
-          🕊️
-        </button>
+          <button type="submit" disabled={!formValue}>
+            Enter
+          </button>
+        </div>
+        <button onClick={clearChat}>Clear Chat</button>
       </form>
     </>
   );
