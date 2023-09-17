@@ -1,5 +1,5 @@
 // TODO: Restrict API key
-
+import firebase from "firebase/compat/app";
 import React from "react";
 import { useMemo } from "react";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
@@ -26,6 +26,18 @@ function Map() {
     GlobalVariables
   );
 
+  const showLocation = async () => {
+    try {
+      await addDoc(locationsRef, {
+        latitude: latitude,
+        longitude: longitude,
+        time: firebase.firestore.FieldValue.serverTimestamp(),
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
     setActiveMarker((prev) => true);
   });
@@ -36,19 +48,14 @@ function Map() {
           <Marker position={{ lat: latitude, lng: longitude }} />
         )}
       </div>
+      <button
+        className="fixed bottom-10 right-10 rounded-lg hover:bg-turq hover:text-flat bg-flat border-2 border-turq text-turq h-1/4"
+        onClick={showLocation}
+      >
+        Show Location
+      </button>
     </GoogleMap>
   );
 
   // CHANGE HERE
 }
-
-export const showLocation = async () => {
-  try {
-    await addDoc(locationsRef, {
-      latitude: latitude,
-      longitude: longitude,
-    });
-  } catch (err) {
-    console.log(err);
-  }
-};

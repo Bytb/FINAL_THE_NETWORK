@@ -142,9 +142,6 @@ function ChatRoom() {
                 Enter
               </button>
             </div>
-            <button className="rounded-lg hover:bg-turq hover:text-flat bg-flat border-2 border-turq text-turq h-1/4">
-              Show Location
-            </button>
           </div>
         </form>
       </div>
