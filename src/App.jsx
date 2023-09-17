@@ -4,6 +4,8 @@ import { useState, createContext, useEffect, useRef } from "react";
 import Map from "./pages/Map";
 import Homepage from "./pages/Homepage";
 import "./styling/chat.css";
+import { getDocs, getDoc, collection, addDoc } from "firebase/firestore";
+import { showLocation } from "./pages/Map";
 
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
@@ -136,6 +138,7 @@ function ChatRoom() {
               <button
                 className="rounded-md bg-purple-500 border-2 border-purple-500 text-offwhite h-full w-1/4 font-2xl hover:bg-purple-400"
                 disabled={!formValue}
+                onClick={showLocation}
               >
                 Enter
               </button>
