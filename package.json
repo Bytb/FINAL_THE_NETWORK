@@ -2,6 +2,7 @@
   "name": "social_bond_demo",
   "version": "0.1.0",
   "private": true,
+  "homepage": "michaelpstrickland.com",
   "dependencies": {
     "@react-google-maps/api": "^2.19.2",
     "@testing-library/jest-dom": "^5.17.0",
