@@ -13,6 +13,8 @@ module.exports = {
         white: "#FFFFF",
         turq: "#13D9C8",
         flat: "#01020E",
+        grayish: "#1C251A",
+        lightgray: "#40453F",
       },
     },
   },
