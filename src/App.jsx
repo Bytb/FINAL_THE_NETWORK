@@ -76,7 +76,6 @@ function App() {
               element={<ChatRoom />}
               className="h-full"
             />
-            <Route path="/map" element={<Map />} />
           </Routes>
         </GlobalVariables.Provider>
       </BrowserRouter>
@@ -112,29 +111,48 @@ function ChatRoom() {
   const clearChat = async () => {};
 
   return (
-    <>
-      <main>
-        {messages &&
-          messages.map((msg) => <ChatMessage key={msg.id} message={msg} />)}
+    <div className="flex">
+      <div className="w-1/4 h-screen overflow-y-scroll bg-flat text-turq font-bold">
+        <main className="mb-60">
+          {messages &&
+            messages.map((msg) => <ChatMessage key={msg.id} message={msg} />)}
 
-        <span ref={dummy}></span>
-      </main>
+          <span ref={dummy}></span>
+        </main>
 
-      <form onSubmit={sendMessage}>
-        <div>
-          <input
-            value={formValue}
-            onChange={(e) => setFormValue(e.target.value)}
-            placeholder="say something nice"
-          />
+        <form
+          onSubmit={sendMessage}
+          className="fixed bottom-0 bg-grayish w-1/4 h-40 p-2 rounded-lg"
+        >
+          <div className="flex gap-2 flex-col h-full">
+            <div className="h-3/4 gap-2 flex">
+              <input
+                value={formValue}
+                onChange={(e) => setFormValue(e.target.value)}
+                placeholder="...write something!"
+                className="h-full w-3/4 rounded-md bg-transparent bg-lightgray"
+              />
 
-          <button type="submit" disabled={!formValue}>
-            Enter
-          </button>
-        </div>
-        <button onClick={clearChat}>Clear Chat</button>
-      </form>
-    </>
+              <button
+                className="rounded-md bg-purple-500 border-2 border-purple-500 text-offwhite h-full w-1/4 font-2xl hover:bg-purple-400"
+                disabled={!formValue}
+              >
+                Enter
+              </button>
+            </div>
+            <button
+              onClick={clearChat}
+              className="rounded-lg hover:bg-turq hover:text-flat bg-flat border-2 border-turq text-turq h-1/4"
+            >
+              Clear Chat
+            </button>
+          </div>
+        </form>
+      </div>
+      <div className="w-3/4">
+        <Map className="" />
+      </div>
+    </div>
   );
 }
 
@@ -146,12 +164,16 @@ function ChatMessage(props) {
   return (
     <>
       <div className={`message ${messageClass}`}>
-        <img
-          src={
-            photoURL || "https://api.adorable.io/avatars/23/abott@adorable.png"
-          }
-        />
-        <p>{text}</p>
+        <div className="h-10 flex gap-3">
+          <img
+            src={
+              photoURL ||
+              "https://api.adorable.io/avatars/23/abott@adorable.png"
+            }
+            className="rounded-full h-8"
+          />
+          <p>{text}</p>
+        </div>
       </div>
     </>
   );
