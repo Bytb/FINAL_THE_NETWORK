@@ -13,7 +13,7 @@ const locationsRef = collection(db, "locations");
 
 export default function Home() {
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+    googleMapsApiKey: "AIzaSyB0O1XNs5m_YOaBI-yniNxOTjL1NKGk0zg",
   });
 
   if (!isLoaded) return <div>Loading...</div>;
@@ -22,11 +22,9 @@ export default function Home() {
 
 function Map() {
   const [activeMarker, setActiveMarker] = useState(false);
-  const { longitude, setLongitude, latitude, setLatitude } = useContext(
-    GlobalVariables
-  );
+  const { longitude, latitude } = useContext(GlobalVariables);
 
-  const showLocation = async () => {
+  const consent = async (ç) => {
     try {
       await addDoc(locationsRef, {
         latitude: latitude,
@@ -41,6 +39,7 @@ function Map() {
   useEffect(() => {
     setActiveMarker((prev) => true);
   });
+
   return (
     <GoogleMap zoom={10} center={{ lat: latitude, lng: longitude }}>
       <div className="h-screen">
@@ -50,9 +49,9 @@ function Map() {
       </div>
       <button
         className="fixed bottom-10 right-10 rounded-lg hover:bg-turq hover:text-flat bg-flat border-2 border-turq text-turq h-1/4"
-        onClick={showLocation}
+        onClick={consent}
       >
-        Show Location
+        Consent 💖
       </button>
     </GoogleMap>
   );
