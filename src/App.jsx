@@ -138,16 +138,12 @@ function ChatRoom() {
               <button
                 className="rounded-md bg-purple-500 border-2 border-purple-500 text-offwhite h-full w-1/4 font-2xl hover:bg-purple-400"
                 disabled={!formValue}
-                onClick={showLocation}
               >
                 Enter
               </button>
             </div>
-            <button
-              onClick={clearChat}
-              className="rounded-lg hover:bg-turq hover:text-flat bg-flat border-2 border-turq text-turq h-1/4"
-            >
-              Clear Chat
+            <button className="rounded-lg hover:bg-turq hover:text-flat bg-flat border-2 border-turq text-turq h-1/4">
+              Show Location
             </button>
           </div>
         </form>
